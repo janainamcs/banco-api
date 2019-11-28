@@ -26,6 +26,10 @@ public class AgenciaService {
 		return agenciaRepository.save(agencia);
 	}
 	
+	public Agencia buscarPorId(Long id) {
+        return agenciaRepository.findById(id).orElseThrow(() -> new RuntimeException("Agência não encontrada"));
+    }
+	
 	public List<Agencia> buscarTodasPeloIdDaCidade(Long cidadeId) {
         return agenciaRepository.findByCidadeId(cidadeId);
     }

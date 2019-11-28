@@ -1,12 +1,12 @@
 package br.com.db1.db1start.bancoapi.service;
 
-import br.com.db1.db1start.bancoapi.entity.Estado;
-import br.com.db1.db1start.bancoapi.repository.EstadoRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import br.com.db1.db1start.bancoapi.entity.Estado;
+import br.com.db1.db1start.bancoapi.repository.EstadoRepository;
 
 @Service
 public class EstadoService {
@@ -20,22 +20,14 @@ public class EstadoService {
         return estadoRepository.save(estado);
     }
 
-    public Estado atualizar(Long id, String novoNome) {
-        Optional<Estado> estado = estadoRepository.findById(id);
-        Estado salvo = estado.map(est -> {
-            est.setNome(novoNome);
-            return estadoRepository.save(est);
-        }).orElseThrow(() -> new RuntimeException("Estado não encontrado"));
-
-        return salvo;
+    public Estado atualizar(Long estadoId, String novoNome) {
+        Estado estado = buscarPorId(estadoId);
+        estado.setNome(novoNome);
+        return estadoRepository.save(estado);
     }
 
     public Estado buscarPorId(Long id) {
         return estadoRepository.findById(id).orElseThrow(() -> new RuntimeException("Estado não encontrado"));
-    }
-
-    public Estado buscarPorNome(String nome) {
-        return estadoRepository.findByNome(nome).orElseThrow(() -> new RuntimeException("Estado não encontrado"));
     }
 
     public List<Estado> buscarTodos() {
@@ -44,5 +36,9 @@ public class EstadoService {
 
     public void deletarPorId(Long id) {
         estadoRepository.deleteById(id);
+    }
+    
+    public void deletarTodos() {
+    	estadoRepository.deleteAll();
     }
 }

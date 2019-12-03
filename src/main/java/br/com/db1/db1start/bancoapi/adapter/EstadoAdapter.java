@@ -1,7 +1,7 @@
-package adapter;
+package br.com.db1.db1start.bancoapi.adapter;
 
+import br.com.db1.db1start.bancoapi.dto.EstadoDTO;
 import br.com.db1.db1start.bancoapi.entity.Estado;
-import dto.EstadoDTO;
 
 public class EstadoAdapter {
 

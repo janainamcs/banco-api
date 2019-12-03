@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.db1.db1start.bancoapi.dto.EstadoFormDTO;
 import br.com.db1.db1start.bancoapi.entity.Estado;
 import br.com.db1.db1start.bancoapi.repository.EstadoRepository;
 
@@ -18,6 +19,14 @@ public class EstadoService {
         Estado estado = new Estado();
         estado.setNome(nome);
         return estadoRepository.save(estado);
+    }
+    
+    public Estado atualizar(Long estadoId, EstadoFormDTO form) {
+    	Estado estado = buscarPorId(estadoId);
+    	String novoNome = form.getNome();
+    	estado.setNome(novoNome);
+    	return estadoRepository.save(estado);
+    	
     }
 
     public Estado atualizar(Long estadoId, String novoNome) {
@@ -36,6 +45,11 @@ public class EstadoService {
 
     public void deletarPorId(Long id) {
         estadoRepository.deleteById(id);
+    }
+    
+    public void deletarPorNome(String nome) {
+    	Estado estado = estadoRepository.findByNome(nome).get();
+    	estadoRepository.delete(estado);
     }
     
     public void deletarTodos() {

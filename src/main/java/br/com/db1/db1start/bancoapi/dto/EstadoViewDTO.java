@@ -1,10 +1,11 @@
 package br.com.db1.db1start.bancoapi.dto;
 
-public class EstadoDTO {
+public class EstadoViewDTO {
 	
 	private Long id;
     private String nome;
 
+    
     public Long getId() {
 		return id;
 	}
@@ -20,7 +21,5 @@ public class EstadoDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-    
-    
 
 }

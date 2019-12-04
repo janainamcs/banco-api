@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.db1.db1start.bancoapi.adapter.EstadoAdapter;
-import br.com.db1.db1start.bancoapi.dto.EstadoDTO;
-import br.com.db1.db1start.bancoapi.dto.EstadoFormDTO;
+import br.com.db1.db1start.bancoapi.dto.EstadoViewDTO;
+import br.com.db1.db1start.bancoapi.dto.EstadoInputDTO;
 import br.com.db1.db1start.bancoapi.entity.Estado;
 import br.com.db1.db1start.bancoapi.service.EstadoService;
 
@@ -25,12 +25,12 @@ public class EstadoController {
 	private EstadoService estadoService;
 	
 	@GetMapping("/estados")
-	public List<EstadoDTO> buscarTodosOsEstados(){
+	public List<EstadoViewDTO> buscarTodosOsEstados(){
 		List<Estado>  estados = estadoService.buscarTodos();
-		List<EstadoDTO> listaDeRetorno = new ArrayList<>();
+		List<EstadoViewDTO> listaDeRetorno = new ArrayList<>();
 		
 		estados.forEach(estado -> {
-			EstadoDTO meuEstadoDTO = EstadoAdapter.transformaEntidadeParaDTO(estado);
+			EstadoViewDTO meuEstadoDTO = EstadoAdapter.transformaEstadoParaViewDTO(estado);
 			listaDeRetorno.add(meuEstadoDTO);
 		});
 		
@@ -39,13 +39,13 @@ public class EstadoController {
 	}
 
 	@PostMapping("/estados")
-	public void cadastrarNovoEstado(@RequestBody EstadoFormDTO form){
+	public void cadastrarNovoEstado(@RequestBody EstadoInputDTO form){
 		estadoService.criar(form.getNome());
 		
 	}
 	
 	@PutMapping("/estados/{estadoId}")
-	public void atualizaEstado(@PathVariable Long estadoId, @RequestBody EstadoFormDTO form){
+	public void atualizaEstado(@PathVariable Long estadoId, @RequestBody EstadoInputDTO form){
 		estadoService.atualizar(estadoId, form);
 	}
 	

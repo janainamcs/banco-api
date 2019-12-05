@@ -26,7 +26,7 @@ public class ContaController {
 	
 	@GetMapping("/contas")
 	public List<ContaViewDTO> buscarTodasAsContas(){
-		//List<Conta>  contas = contaService.buscarTodos();
+		List<Conta>  contas = contaService.buscarTodos();
 		List<ContaViewDTO> listaDeRetorno = new ArrayList<>();
 		
 		contas.forEach(conta -> {
@@ -38,7 +38,7 @@ public class ContaController {
 		
 	}
 
-	/*@PostMapping("/contas")
+	@PostMapping("/contas")
 	public void cadastrarNovaConta(@RequestBody ContaInputDTO form){
 		contaService.criar(form.getNome());
 		
@@ -57,6 +57,6 @@ public class ContaController {
 	@DeleteMapping("/contas/nome/{estadoNome}")
 	public void deletaEstado(@PathVariable String contaNome){
 		contaService.deletarPorNome(contaNome);
-	}*/
+	}
 
 }

@@ -15,8 +15,9 @@ public class EstadoService {
     @Autowired
     private EstadoRepository estadoRepository;
 
-    public Estado criar(String nome) {
-        Estado estado = new Estado();
+    public Estado criar(EstadoInputDTO form) {
+    	Estado estado = new Estado();
+    	String nome = form.getNome();
         estado.setNome(nome);
         return estadoRepository.save(estado);
     }
@@ -27,12 +28,6 @@ public class EstadoService {
     	estado.setNome(novoNome);
     	return estadoRepository.save(estado);
     	
-    }
-
-    public Estado atualizar(Long estadoId, String novoNome) {
-        Estado estado = buscarPorId(estadoId);
-        estado.setNome(novoNome);
-        return estadoRepository.save(estado);
     }
 
     public Estado buscarPorId(Long id) {

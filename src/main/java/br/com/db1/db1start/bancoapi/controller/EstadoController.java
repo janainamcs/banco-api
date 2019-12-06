@@ -46,7 +46,7 @@ public class EstadoController {
 	
 	@PutMapping("/estados/{estadoId}")
 	public void atualizaEstado(@PathVariable Long estadoId, @RequestBody EstadoInputDTO form){
-		estadoService.atualizar(estadoId, form);
+		estadoService.atualizar(estadoId, form.getNome());
 	}
 	
 	@DeleteMapping("/estados/{estadoId}")

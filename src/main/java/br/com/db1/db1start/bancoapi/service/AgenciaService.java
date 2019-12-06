@@ -37,5 +37,10 @@ public class AgenciaService {
 	public void deletarTodos() {
     	agenciaRepository.deleteAll();
     }
+
+	public List<Agencia> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -35,8 +35,8 @@ public class CidadeService {
         return cidadeRepository.findById(id).orElseThrow(() -> new RuntimeException("Cidade não encontrada"));
     }
     
-    public List<Cidade> buscarTodosPeloIdDoEstado(Long estadoId) {
-        return cidadeRepository.findByEstadoId(estadoId);
+    public List<Cidade> buscarTodosPeloEstado(Estado estado) {
+        return cidadeRepository.findByEstado(estado);
     }
 
     public List<Cidade> buscarTodos() {

@@ -76,7 +76,7 @@ public class CidadeServiceTest {
     	cidadeService.criar("Campinas", outroEstado.getId());
         
     	List<Cidade> todasAsCidadesDoEstado1 = 
-    			cidadeService.buscarTodosPeloIdDoEstado(estadoDefault.getId());
+    			cidadeService.buscarTodosPeloEstado(estadoDefault);
         List<String> nomesCidadesEstado1 = 
         		todasAsCidadesDoEstado1.stream().map(Cidade::getNome).collect(Collectors.toList());
         Assertions.assertEquals(todasAsCidadesDoEstado1.size(), 4);

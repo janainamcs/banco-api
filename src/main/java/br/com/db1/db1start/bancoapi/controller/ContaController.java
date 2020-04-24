@@ -47,17 +47,17 @@ public class ContaController {
 	
 	@PutMapping("/contas/{contaId}")
 	public void atualizaConta(@PathVariable Long contaId, @RequestBody ContaInputDTO form){
-		contaService.atualizar(contaId, form);
+		contaService.atualizarSaldo(contaId, form.getSaldo());
 	}
 	
 	@DeleteMapping("/contas/{contaId}")
-	public void deletaEstado(@PathVariable Long contaId){
+	public void deletaPorId(@PathVariable Long contaId){
 		contaService.deletarPorId(contaId);
 	}
 	
 	@DeleteMapping("/contas/nome/{estadoNome}")
-	public void deletaEstado(@PathVariable String contaNome){
-		contaService.deletarPorNome(contaNome);
+	public void deletaPorNomeDoCliente(@PathVariable String clienteNome){
+		contaService.deletarPorNomeDoCliente(clienteNome);
 	}
 
 }

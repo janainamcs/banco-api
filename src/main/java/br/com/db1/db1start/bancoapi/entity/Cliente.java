@@ -19,6 +19,7 @@ public class Cliente {
     @Column(name = "telefone", nullable = false)
     private String telefone;
 
+    //Getters
     public Long getId() {
         return id;
     }
@@ -27,20 +28,21 @@ public class Cliente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getTelefone() {
         return telefone;
+    }
+
+    //Setters
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setTelefone(String telefone) {

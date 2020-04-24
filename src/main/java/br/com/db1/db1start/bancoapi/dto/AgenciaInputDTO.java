@@ -8,6 +8,7 @@ public class AgenciaInputDTO {
 	private String numBanco;
 	private CidadeInputDTO cidadeDTO;
 
+	//getters
 	public String getNumero() {
 		return numero;
 	}
@@ -20,6 +21,7 @@ public class AgenciaInputDTO {
 		return cidadeDTO;
 	}
 
+	//setters
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
@@ -31,5 +33,4 @@ public class AgenciaInputDTO {
 	public void setCidadeDTO(CidadeInputDTO cidade) {
 		this.cidadeDTO = cidade;
 	}
-
 }

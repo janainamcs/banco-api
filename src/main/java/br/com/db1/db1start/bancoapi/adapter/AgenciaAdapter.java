@@ -10,9 +10,7 @@ public class AgenciaAdapter {
 
 	public static AgenciaViewDTO transformaAgenciaParaViewDTO(Agencia agencia) {
 		AgenciaViewDTO agenciaDTO =  new AgenciaViewDTO();
-		CidadeViewDTO cidadeDTO = new CidadeViewDTO();
-		
-		cidadeDTO = CidadeAdapter.transformaCidadeParaViewDTO(agencia.getCidade());
+		CidadeViewDTO cidadeDTO = CidadeAdapter.transformaCidadeParaViewDTO(agencia.getCidade());
 		
 		agenciaDTO.setId(agencia.getId());
 		agenciaDTO.setNumero(agencia.getNumero());
@@ -24,9 +22,7 @@ public class AgenciaAdapter {
 	
 	public static Agencia transformaInputDTOparaAgencia(AgenciaInputDTO agenciaDTO) {
 		Agencia agencia =  new Agencia();
-		Cidade cidade =  new Cidade();
-		
-		cidade = CidadeAdapter.transformaInputDTOParaCidade(agenciaDTO.getCidadeDTO());
+		Cidade cidade = CidadeAdapter.transformaInputDTOParaCidade(agenciaDTO.getCidadeDTO());
 		
 		agencia.setNumero(agenciaDTO.getNumero());
 		agencia.setNumeroBanco(agenciaDTO.getNumBanco());

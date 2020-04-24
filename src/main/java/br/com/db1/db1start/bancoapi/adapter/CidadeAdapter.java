@@ -9,9 +9,7 @@ public class CidadeAdapter {
 
 	public static CidadeViewDTO transformaCidadeParaViewDTO(Cidade cidade) {
 		CidadeViewDTO cidadeDTO =  new CidadeViewDTO();
-		EstadoViewDTO estadoDTO = new EstadoViewDTO();
-		
-		estadoDTO = EstadoAdapter.transformaEstadoParaViewDTO(cidade.getEstado());
+		EstadoViewDTO estadoDTO = EstadoAdapter.transformaEstadoParaViewDTO(cidade.getEstado());
 		
 		cidadeDTO.setId(cidade.getId());
 		cidadeDTO.setNome(cidade.getNome());
@@ -24,7 +22,7 @@ public class CidadeAdapter {
 		Cidade cidade = new Cidade();
 		
 		cidade.setNome(cidadeDTO.getNome());
-		cidade.setEstado(cidadeDTO.getEstado());
+		//cidade.setEstado(cidadeDTO.getEstado());
 		
 		return cidade;
 	}

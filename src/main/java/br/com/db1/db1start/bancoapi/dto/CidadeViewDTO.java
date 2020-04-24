@@ -7,20 +7,25 @@ public class CidadeViewDTO {
 	private String nome;
 	private EstadoViewDTO estado;
 	
+	//getters
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+
 	public EstadoViewDTO getEstado() {
 		return estado;
+	}
+
+	//setters
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public void setEstado(EstadoViewDTO estado) {
 		this.estado = estado;

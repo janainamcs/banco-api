@@ -6,6 +6,20 @@ public class ClienteInputDTO {
 	private String cpf;
 	private String telefone;
 
+	//getters
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	//Setters
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -18,16 +32,5 @@ public class ClienteInputDTO {
 		this.telefone = telefone;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
 
 }

@@ -23,32 +23,35 @@ public class EstadoController {
 	
 	@Autowired
 	private EstadoService estadoService;
-	
+
+	//create
+	@PostMapping("/estados")
+	public void cadastrarNovoEstado(@RequestBody EstadoInputDTO form){
+		estadoService.criar(form.getNome());
+	}
+
+	//read
 	@GetMapping("/estados")
 	public List<EstadoViewDTO> buscarTodosOsEstados(){
 		List<Estado>  estados = estadoService.buscarTodos();
 		List<EstadoViewDTO> listaDeRetorno = new ArrayList<>();
-		
+
 		estados.forEach(estado -> {
 			EstadoViewDTO meuEstadoDTO = EstadoAdapter.transformaEstadoParaViewDTO(estado);
 			listaDeRetorno.add(meuEstadoDTO);
 		});
-		
+
 		return listaDeRetorno;
-		
+
 	}
 
-	@PostMapping("/estados")
-	public void cadastrarNovoEstado(@RequestBody EstadoInputDTO form){
-		estadoService.criar(form.getNome());
-		
-	}
-	
+	//update
 	@PutMapping("/estados/{estadoId}")
 	public void atualizaEstado(@PathVariable Long estadoId, @RequestBody EstadoInputDTO form){
 		estadoService.atualizar(estadoId, form.getNome());
 	}
-	
+
+	//delete
 	@DeleteMapping("/estados/{estadoId}")
 	public void deletaEstado(@PathVariable Long estadoId){
 		estadoService.deletarPorId(estadoId);

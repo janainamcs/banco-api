@@ -1,11 +1,11 @@
 package br.com.db1.db1start.bancoapi.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.db1.db1start.bancoapi.dto.ContaInputDTO;
 import br.com.db1.db1start.bancoapi.entity.Agencia;
 import br.com.db1.db1start.bancoapi.entity.Cliente;
 import br.com.db1.db1start.bancoapi.entity.Conta;
@@ -20,7 +20,8 @@ public class ContaService {
 	private ClienteService clienteService;
 	@Autowired
 	private ContaRepository contaRepository;
-	
+
+	//Create
 	public Conta criar(Double saldo, Long agenciaId, Long clienteId) {
 		Agencia agencia = agenciaService.buscarPorId(agenciaId);
 		Cliente cliente = clienteService.buscarPorId(clienteId);
@@ -30,28 +31,42 @@ public class ContaService {
 		conta.setSaldo(saldo);
 		return contaRepository.save(conta);
 	}
-	
-	public void deletarTodos() {
-    	contaRepository.deleteAll();
-    }
 
+	//Read
 	public List<Conta> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return contaRepository.findAll();
 	}
 
-	public void deletarPorNome(String contaNome) {
-		// TODO Auto-generated method stub
-		
+	public Optional<Conta> buscarPorId(Long id){
+		return contaRepository.findById(id);
+	}
+
+	public Optional<Conta> buscarPorNomeDoCliente(String nome){
+		Cliente cliente = clienteService.buscarPorNome(nome).get();
+		return contaRepository.findById(cliente.getId());
+	}
+
+	//Update
+	public Conta atualizarSaldo(Long id, Double saldo){
+		Conta conta = buscarPorId(id);
+		conta.setSaldo(saldo);
+		return contaRepository.save(conta);
+	}
+
+	//Delete
+	public void deletarTodos() {
+		contaRepository.deleteAll();
+    }
+
+
+
+	public void deletarPorNomeDoCliente(String clienteNome) {
+		Conta conta = buscarPorNomeDoCliente(clienteNome);
+		contaRepository.delete(conta);
 	}
 
 	public void deletarPorId(Long contaId) {
-		// TODO Auto-generated method stub
-		
+		contaRepository.deleteById(contaId);
 	}
 
-	public void atualizar(Long contaId, ContaInputDTO form) {
-		// TODO Auto-generated method stub
-		
-	}
 }

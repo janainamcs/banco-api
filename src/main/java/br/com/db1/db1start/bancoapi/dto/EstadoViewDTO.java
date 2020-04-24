@@ -5,7 +5,7 @@ public class EstadoViewDTO {
 	private Long id;
     private String nome;
 
-    
+	//getters
     public Long getId() {
 		return id;
 	}
@@ -13,7 +13,8 @@ public class EstadoViewDTO {
     public String getNome() {
 		return nome;
 	}
-    
+
+	//setters
 	public void setId(Long id) {
 		this.id = id;
 	}
